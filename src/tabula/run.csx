@@ -48,6 +48,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     } catch {
         return new HttpResponseMessage(HttpStatusCode.InternalServerError);
     } finally {
-        File.Delete(filePath);
+        //File.Delete(filePath);
     }
 }
