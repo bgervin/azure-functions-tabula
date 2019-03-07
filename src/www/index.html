@@ -29,7 +29,7 @@
         document.body.classList.remove('waiting')
         input.value = ''
         if (result) {
-          document.getElementById('result').innerHTML = result.map(function(r) { return r }).join('<br />')
+          document.getElementById('result').innerHTML = result
         } else {
           document.getElementById('result').innerHTML = 'Nothing found :('
         }
