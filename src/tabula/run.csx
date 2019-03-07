@@ -9,10 +9,15 @@ static string tempFolder = $@"{webRoot}\temp";
 
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 {
-    var country = req.GetQueryNameValuePairs()
-        .FirstOrDefault(q => string.Compare(q.Key, "country", true) == 0)
-        .Value ?? "us";
-    var countrySafe = Regex.Replace(country, @"\W", "");
+    var format = req.GetQueryNameValuePairs()
+        .FirstOrDefault(q => string.Compare(q.Key, "format", true) == 0)
+        .Value ?? "CSV";
+    var formatSafe = Regex.Replace(format, @"\W", "");
+
+    var method = req.GetQueryNameValuePairs()
+        .FirstOrDefault(q => string.Compare(q.Key, "method", true) == 0)
+        .Value ?? "CSV";
+    var methodSafe = Regex.Replace(format, @"\W", "");
 
     if (!Directory.Exists(tempFolder))
     {
@@ -31,7 +36,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     var processStartInfo = new ProcessStartInfo
     {
         FileName = javaHome + "\\bin\\java",
-        Arguments = $@"-jar tabula.jar --stream -f CSV {filePath}",
+        Arguments = $@"-jar tabula.jar --{method.ToLower()} -f {formatSafe.ToUpper()} {filePath}",
         RedirectStandardOutput = true,
         UseShellExecute = false,
         WorkingDirectory = $@"{webRoot}"

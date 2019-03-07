@@ -50,15 +50,16 @@
     <div class="container">
       <div id="uploader">
         <h3>PDF to extract table(s) from</h3>
-        <select id="country">
-          <option value="au">Australia</option>
-          <option value="eu">Europe</option>
-          <option value="kr">Korea</option>
-          <option value="mx">Mexico</option>
-          <option value="sg">Singapore</option>
-          <option value="us" selected>US</option>
+        <select id="format">
+          <option value="CSV">CSV</option>
+          <option value="TSV">TSV</option>
+          <option value="JSON">JSON</option>
         </select><br />
-        <input id="image" type="file" class="form-control" accept="image/jpeg" onchange="uploadFile(this)" />
+        <input id="pdf" type="file" class="form-control" accept="application/pdf" onchange="uploadFile(this)" />
+        <select id="method">
+          <option value="Lattice">Lattice</option>
+          <option value="Stream">Stream</option>
+        </select><br />
       </div>
       <p id="waiting">Looking for tables...</p>
       <h1 id="result"></h1>
