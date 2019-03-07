@@ -18,12 +18,14 @@
   function uploadFile(input) {
     if (!input.files[0]) return
 
-    var countrySelect = document.getElementById('country')
-    var country = countrySelect.options[countrySelect.selectedIndex].value
+    var formatSelect = document.getElementById('format')
+    var format = formatSelect.options[formatSelect.selectedIndex].value
+    var methodSelect = document.getElementById('method')
+    var method = methodSelect.options[methodSelect.selectedIndex].value
 
     document.body.classList.add('waiting')
     document.getElementById('result').innerHTML = ''
-    axios.post('/api/tabula?country=' + country, input.files[0], config)
+    axios.post('/api/tabula?format=' + format + '&method=' + method, input.files[0], config)
       .then(function(response) {
         const result = response.data
         document.body.classList.remove('waiting')

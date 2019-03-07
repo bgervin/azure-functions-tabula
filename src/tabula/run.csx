@@ -36,7 +36,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     var processStartInfo = new ProcessStartInfo
     {
         FileName = javaHome + "\\bin\\java",
-        Arguments = $@"-jar tabula.jar --{method.ToLower()} -f {formatSafe.ToUpper()} {filePath}",
+        Arguments = $@"-jar tabula.jar --{methodSafe.ToLower()} -f {formatSafe.ToUpper()} {filePath}",
         RedirectStandardOutput = true,
         UseShellExecute = false,
         WorkingDirectory = $@"{webRoot}"
