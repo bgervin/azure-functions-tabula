@@ -31,7 +31,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     var processStartInfo = new ProcessStartInfo
     {
         FileName = javaHome + "\\bin\\java",
-        Arguments = $@"tabula.jar --stream -f CSV {filePath}",
+        Arguments = $@"-jar tabula.jar --stream -f CSV {filePath}",
         RedirectStandardOutput = true,
         UseShellExecute = false,
         WorkingDirectory = $@"{webRoot}"
