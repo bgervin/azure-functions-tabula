@@ -28,7 +28,7 @@
         const result = response.data
         document.body.classList.remove('waiting')
         input.value = ''
-        if (result && result.results && result.results.length) {
+        if (result) {
           document.getElementById('result').innerHTML = result.results.map(function(r) { return r }).join('<br />')
         } else {
           document.getElementById('result').innerHTML = 'Nothing found :('
